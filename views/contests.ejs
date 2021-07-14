@@ -1,0 +1,11 @@
+<%-include("header")-%>
+
+<%for(let i=0;i<contestDetails.length;i++){%>
+    <h3><%= i+1 %>) Contest Name: <%= contestDetails[i].contestName %></h3>
+    <h4>Rank: <%= contestDetails[i].rank %></h4>
+    <h4>Rating (before the contest): <%= contestDetails[i].oldRating %></h4>
+    <h4>Rating (after the contest): <%= contestDetails[i].newRating %></h4>
+    <br>
+<%}%>
+
+<%-include("footer")-%>

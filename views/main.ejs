@@ -1,0 +1,50 @@
+<%-include("header")-%>
+
+<div class="div3">
+    <h4>Enter the Codeforces User-Name here-</h4>
+    <form action="/" method="POST">
+        <input style="width: 50%; border-radius: 0.4rem; padding: 0.5em;" type="text" name="userName" placeholder="User-Name" required autofocus>
+        <button class="btn btn-primary" style="width: 30%; margin-left: 2em; transition: all 0.3s ease;" type="submit">Click here</button>
+    </form>
+    <div class="cont">
+        <%if(userName!=""){%>
+            <hr style="border-bottom: 1px solid rgb(141, 120, 120); border-collapse: collapse;">
+            <h1 style="font-weight: bolder;"><%= userName %></h1><br>
+            <h4>Total number of wrong ans: <%= wrngans %></h4>
+            <h4>Total number of correct ans: <%= crctans %></h4>
+            <h4>Total number of tle: <%= tle %></h4>
+            <h4>Total number of tries: <%= wrngans+crctans+tle %></h4>
+        <%}%>
+        <br>
+        <%if(handle!=""){%>
+            <h3>Profile Picture</h3><img src=<%= titlePhoto %>><br><br>
+            <h4>Contributions: <%= contribution %></h4>
+            <h4>Number of Friends: <%= friendOfCount %></h4>
+            <h4>Rating: <%= newRating %></h4>
+            <%if(newRating===0){%>
+                <p>The user hasn't participated in any contests</p>
+            <%}%>
+            <%if(newRating!==0){%>
+                <h4>Total Contests given: <%= numberOfContest %></h4> <a href="/contests">Click here to know contest details</a>
+            <%}%>
+            <br><br><br>
+            <table>
+                <tr><th>Rating of Question</th>
+                <th>Number of solved</th></tr>
+                <%for(let i=0;i<ratingQues.length;i++){%>
+                    <tr><td><%= ratingQues[i][0] %></td> <td><%= ratingQues[i][1] %></td></tr>
+                <%}%>
+            </table>
+            <br><br>
+            <table>
+                <tr><th>Tag of Question</th>
+                <th>Number of solved</th></tr>
+                <%tagNames.forEach((i)=>{%>
+                    <tr><td><%= i %></td> <td><%= countTags[i] %></td></tr>
+                <%});%>
+            </table>
+        <%}%>
+    </div>
+</div>
+
+<%-include("footer")-%>
